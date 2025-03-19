@@ -11,10 +11,21 @@ public class User {
     private String password;
     private final MyList<Car> userCars;
 
+    private Role role;
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+        this.role = Role.USER;
         userCars = new MyArrayList<>();
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

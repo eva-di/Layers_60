@@ -1,6 +1,7 @@
 package view;
 
 import model.Car;
+import model.Role;
 import model.User;
 import service.MainService;
 import utils.MyList;
@@ -51,7 +52,19 @@ public class Menu {
                 showUserMenu();
                 break;
             case 3:
+                User active = service.getActiveUser();
+                if(active == null) {
+                    System.out.println("Авторизуйтесь в системе");
+                    waitRead();
+                    break;
+                }
+                if (active.getRole() != Role.ADMIN) {
+                    System.out.println("Доступ только ля администраторов");
+                    waitRead();
+                    break;
+                }
                 // Todo show admin menu
+                System.out.println("Здесь будет метод показывающий админ меню");
                 break;
             default:
                 System.out.println("Сделайте корректный выбор");
